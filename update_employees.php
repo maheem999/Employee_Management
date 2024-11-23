@@ -1,14 +1,15 @@
 <?php
 include 'db.php';
 
-if(ISSET($_GET['id'])){
-    $id = $_GET['id'];
+if(ISSET($_GET['id']))
+{
+    $id = intval($_GET['id']);
 
-    $sql = "SELECT * FROM employees WHERE id=$id";
+    $sql = "SELECT* FROM employees WHERE id= $id";
 
     $result = $connection->query($sql);
     
-    $employees = $result->fetch_assoc();
+    $employee = $result->fetch_assoc();
 }
 
 if($_SERVER["REQUEST_METHOD"]=="POST")
@@ -43,12 +44,11 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
  <h1 class="text-center text-4xl my-5">Update Employees</h1>
 
  <form action="update_employees.php" method = "POST" class="w-1/2 mx-auto py-4 space-y-4">
- <input name="id" type="hidden" value="<?= $employees['id']; ?>" placeholder="Enter id" class="w-full border border-blue-500 p-2 rounded-md">
- <input name="id" type="number" value="<?= $employees['id']; ?>" placeholder="Enter employees id" class="w-full border border-blue-500 p-2 rounded-md">
- <input name ="employee_name" type="text" value="<?= $employees['employee_name']; ?>" placeholder="Enter employee name" class="w-full border border-blue-500 p-2 rounded-md">
- <input name ="position" type="text" value="<?= $employees['position']; ?>" placeholder="Enter employee position" class="w-full border border-blue-500 p-2 rounded-md">
- <input name ="salary" type="number" value="<?= $employees['salary']; ?>" placeholder="Enter employee salary" class="w-full border border-blue-500 p-2 rounded-md">
- <input name ="hire_date" type="date" value="<?= $employees['hire_date']; ?>" placeholder="Enter employee hire date" class="w-full border border-blue-500 p-2 rounded-md">
+ <input name="id" type="hidden" value="<?= $employee['id']; ?>" placeholder="Enter employees id" class="w-full border border-blue-500 p-2 rounded-md">
+ <input name ="employee_name" type="text" value="<?= $employee['employee_name']; ?>" placeholder="Enter employee name" class="w-full border border-blue-500 p-2 rounded-md">
+ <input name ="position" type="text" value="<?= $employee['position']; ?>" placeholder="Enter employee position" class="w-full border border-blue-500 p-2 rounded-md">
+ <input name ="salary" type="number" value="<?= $employee['salary']; ?>" placeholder="Enter employee salary" class="w-full border border-blue-500 p-2 rounded-md">
+ <input name ="hire_date" type="date" value="<?= $employee['hire_date']; ?>" placeholder="Enter employee hire date" class="w-full border border-blue-500 p-2 rounded-md">
  <button class="w-full bg-blue-500 text-white border border-blue-500 p-2 rounded-md">Submit</button>
  </form>
  
