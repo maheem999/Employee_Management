@@ -3,13 +3,13 @@ include 'db.php';
 
 if($_SERVER["REQUEST_METHOD"]=="POST")
     {
-        $id=$_POST['id'];
+       
         $employee_name=$_POST['employee_name'];
         $position=$_POST['position'];
         $salary=$_POST['salary'];
         $hire_date=$_POST['hire_date'];
 
-        $sql="INSERT INTO employees(id,employee_name,position,salary,hire_date) VALUES('$id', '$employee_name','$position','$salary','$hire_date')";
+        $sql="INSERT INTO employees(employee_name,position,salary,hire_date) VALUES('$employee_name','$position','$salary','$hire_date')";
         
         if($connection->query($sql)==TRUE)
         {
@@ -30,10 +30,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <h1 class="text-center text-4xl my-5">Create Employee</h1>
 
-    <form action="create_employees.php" method = "POST" class="w-1/2 mx-auto py-4 space-y-4">
-    <input name="id" type="number" placeholder="Enter Employee id" class="w-full border border-blue-500 p-2 rounded-md">
+    <h1 class="text-center text-4xl my-5">Create Employee</h1>
+    <form action="create_employees.php" method="POST" class="w-1/2 mx-auto py-4 space-y-3">
     <input name ="employee_name" type="text" placeholder="Enter employee name" class="w-full border border-blue-500 p-2 rounded-md">
     <input name ="position" type="text" placeholder="Enter emplpoyee position" class="w-full border border-blue-500 p-2 rounded-md">
     <input name ="salary" type="number" placeholder="Enter employee salary" class="w-full border border-blue-500 p-2 rounded-md">
