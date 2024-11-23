@@ -4,10 +4,11 @@ $username="root";
 $password="";
 $dbname="company_management";
 
-$connection=new mysqli($servername, $username,$password,$dbname);
+$connection = new mysqli($servername, $username, $password);
 
-if($connection->connect_error)
-{
-    echo "fail to conect database";
-}
+
+
+$connection->select_db($dbname);
+
+
 ?>
