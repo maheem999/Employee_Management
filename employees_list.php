@@ -30,24 +30,25 @@ $employees = $result->fetch_all(MYSQLI_ASSOC);
     <table class="mx-auto border p-5">
         <thead class="py-2 bg-blue-500 text-white font-medium">
             <tr >
-                <th >ID</th>
+               
                 <th >Employee Name</th>
                 <th >Position</th>
                 <th >salary</th>
                 <th >Hire Date</th>
+                <th >Action</th>
             </tr>
         </thead>
         <tbody>
-            <?php foreach($employees as $employees): ?>
+            <?php foreach($employees as $employee): ?>
                 <tr>
-                    <td><?= $employees['id']; ?></td>
-                    <td><?= $employees['employee_name']; ?></td>
-                    <td><?= $employees['position']; ?></td>
-                    <td><?= $employees['salary']; ?></td>
-                    <td><?= $employees['hire_date']; ?></td>
+                    
+                    <td><?= $employee['employee_name']; ?></td>
+                    <td><?= $employee['position']; ?></td>
+                    <td><?= $employee['salary']; ?></td>
+                    <td><?= $employee['hire_date']; ?></td>
                     <td>
-                        <a href="update.php?id=<?= $employees['id']; ?>"><i class="fa-solid fa-pen-to-square border p-1.5 bg-blue-500 rounded-md text-white"></i></a>
-                        <a href="delete.php?id=<?= $employees['id']; ?>"><i class="fa-solid fa-trash border p-1.5 bg-red-500 rounded-md text-white"></i></a>
+                        <a href="update_employees.php?id=<?= $employee['id']; ?>"><i class="fa-solid fa-pen-to-square border p-1.5 bg-blue-500 rounded-md text-white"></i></a>
+                        <a href="delete_employees.php?id=<?= $employee['id']; ?>"><i class="fa-solid fa-trash border p-1.5 bg-red-500 rounded-md text-white"></i></a>
                     </td>
                 </tr>
             <?php endforeach ?>
